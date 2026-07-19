@@ -1,0 +1,197 @@
+.contenedor {
+  padding-top: var(--space-3);
+}
+
+.hoja {
+  position: relative;
+  background: var(--papel);
+  border: 1px solid var(--tinta);
+  padding: var(--space-5) var(--space-4) var(--space-5) calc(var(--space-5) + var(--space-3));
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.hoja::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--space-4);
+  width: 1px;
+  background: var(--rojo);
+  opacity: 0.55;
+}
+
+.hoja::after {
+  content: "";
+  position: absolute;
+  top: var(--space-5);
+  bottom: var(--space-5);
+  left: calc(var(--space-4) + 3px);
+  width: 1px;
+  background: var(--rojo);
+  opacity: 0.25;
+}
+
+.encabezado {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px dashed var(--gris-claro);
+}
+
+.filaTitulo {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-3);
+}
+
+.rotulo {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: var(--etiqueta-tracking);
+  font-size: var(--fs-sm);
+  color: var(--tinta);
+}
+
+.estado {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: var(--fs-xs);
+  color: var(--rojo);
+  border: 1px solid var(--rojo);
+  padding: 2px 8px;
+  transform: rotate(-2deg);
+  background: rgba(179, 58, 43, 0.06);
+}
+
+.filaCampos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  border-bottom: 1px solid var(--tinta);
+  padding-bottom: 4px;
+}
+
+.campoEtiqueta {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: var(--etiqueta-tracking);
+  font-size: var(--fs-xs);
+  color: var(--gris);
+}
+
+.campoValor {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  color: var(--tinta);
+  letter-spacing: 0.04em;
+}
+
+.archivo {
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+}
+
+.divisorArchivo {
+  position: relative;
+  border-top: 1px dashed var(--tinta);
+  margin-bottom: var(--space-4);
+  padding-top: var(--space-3);
+}
+
+.tabDivisor {
+  position: absolute;
+  top: -10px;
+  left: 0;
+  background: var(--tinta);
+  color: var(--copia);
+  padding: 3px 10px;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: var(--etiqueta-tracking);
+  font-size: var(--fs-xs);
+}
+
+.rolloArchivado {
+  --perfo-h: 10px;
+  position: relative;
+  width: 100%;
+  padding: calc(var(--perfo-h) + 6px) var(--space-3) calc(var(--perfo-h) + 6px);
+  background: var(--pelicula);
+  border: 1px solid var(--pelicula-borde);
+  margin-bottom: var(--space-2);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: var(--etiqueta-tracking);
+  font-size: var(--fs-xs);
+  color: var(--gris-claro);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: color 0.12s ease;
+}
+
+.rolloArchivado::before,
+.rolloArchivado::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: var(--perfo-h);
+  background-color: var(--pelicula);
+  background-image: radial-gradient(
+    ellipse 4px 2.5px at 8px 50%,
+    var(--papel) 99%,
+    transparent 100%
+  );
+  background-size: 16px 100%;
+  background-repeat: repeat-x;
+}
+
+.rolloArchivado::before { top: 0; border-bottom: 1px solid var(--pelicula-borde); }
+.rolloArchivado::after { bottom: 0; border-top: 1px solid var(--pelicula-borde); }
+
+.rolloArchivado[aria-expanded="true"] {
+  color: var(--copia);
+  outline: 1px solid var(--rojo);
+  outline-offset: -1px;
+}
+
+.rolloArchivadoNumero {
+  color: var(--copia);
+}
+
+.detalleArchivado {
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px dashed var(--gris-claro);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.entradasArchivado {
+  margin-top: var(--space-2);
+}
+
+.tituloEntradas {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: var(--etiqueta-tracking);
+  font-size: var(--fs-xs);
+  color: var(--gris);
+  margin-bottom: var(--space-3);
+  padding-bottom: 2px;
+  border-bottom: 1px solid var(--gris-claro);
+}

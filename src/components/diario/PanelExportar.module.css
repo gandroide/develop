@@ -1,0 +1,78 @@
+.panel {
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.titulo {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: var(--etiqueta-tracking);
+  font-size: var(--fs-xs);
+  color: var(--gris);
+  padding-bottom: 2px;
+  border-bottom: 1px solid var(--gris-claro);
+  align-self: flex-start;
+}
+
+.botones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.boton {
+  position: relative;
+  background: var(--copia);
+  color: var(--tinta);
+  border: 1px solid var(--tinta);
+  padding: 8px 14px;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: var(--etiqueta-tracking);
+  font-size: var(--fs-xs);
+  transition: background 0.12s ease, color 0.12s ease;
+}
+
+.boton::before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  bottom: 3px;
+  left: 3px;
+  border: 1px dashed transparent;
+  pointer-events: none;
+}
+
+.boton:hover {
+  background: var(--tinta);
+  color: var(--copia);
+}
+
+.boton:hover::before {
+  border-color: var(--copia);
+  opacity: 0.6;
+}
+
+.botonRojo {
+  background: var(--copia);
+  color: var(--rojo);
+  border-color: var(--rojo);
+}
+
+.botonRojo:hover {
+  background: var(--rojo);
+  color: var(--copia);
+}
+
+.mensaje {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: var(--etiqueta-tracking);
+  font-size: var(--fs-xs);
+  color: var(--rojo);
+  padding-left: var(--space-3);
+  border-left: 2px solid var(--rojo);
+}

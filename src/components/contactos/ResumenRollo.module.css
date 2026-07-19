@@ -1,0 +1,92 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+}
+
+.celda {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  border-bottom: 1px solid var(--tinta);
+  padding: 0 0 var(--space-2);
+}
+
+.numero {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xl);
+  color: var(--tinta);
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+
+.etiqueta {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: var(--etiqueta-tracking);
+  font-size: var(--fs-xs);
+  color: var(--gris);
+}
+
+.cierre {
+  position: relative;
+  margin-top: var(--space-5);
+  padding: var(--space-4);
+  background: var(--papel);
+  color: var(--tinta);
+  border: 1px solid var(--tinta);
+}
+
+.cierre::before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  bottom: 4px;
+  left: 4px;
+  border: 1px dashed var(--rojo);
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.cierreTitulo {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  font-size: var(--fs-sm);
+  margin-bottom: var(--space-3);
+  color: var(--rojo);
+}
+
+.cierreTexto {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  line-height: 1.6;
+  color: var(--tinta);
+}
+
+.boton {
+  position: relative;
+  margin-top: var(--space-4);
+  background: var(--rojo);
+  color: var(--copia);
+  padding: var(--space-3) var(--space-4);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: var(--etiqueta-tracking);
+  font-size: var(--fs-sm);
+  border: 1px solid var(--rojo);
+}
+
+.boton::before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  bottom: 3px;
+  left: 3px;
+  border: 1px dashed var(--copia);
+  pointer-events: none;
+  opacity: 0.6;
+}

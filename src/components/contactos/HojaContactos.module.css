@@ -1,0 +1,28 @@
+.hoja {
+  background: var(--tinta);
+  padding: var(--space-4);
+  border: 1px solid var(--tinta);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+}
+
+@media (min-width: 480px) {
+  .grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+.pie {
+  margin-top: var(--space-3);
+  color: var(--gris-claro);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: var(--etiqueta-tracking);
+  font-size: var(--fs-xs);
+  display: flex;
+  justify-content: space-between;
+}

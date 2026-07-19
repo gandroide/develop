@@ -1,0 +1,34 @@
+.grupo {
+  display: flex;
+  gap: 0;
+  flex-wrap: wrap;
+  border: 1px solid var(--tinta);
+}
+
+.chip {
+  flex: 1 1 auto;
+  min-width: 25%;
+  background: var(--copia);
+  color: var(--tinta);
+  border: 0;
+  border-right: 1px solid var(--tinta);
+  padding: 8px 10px;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: var(--etiqueta-tracking);
+  font-size: var(--fs-xs);
+  transition: background 0.12s ease, color 0.12s ease;
+}
+
+.chip:last-child {
+  border-right: 0;
+}
+
+.chip:hover {
+  background: var(--papel);
+}
+
+.activo {
+  background: var(--tinta);
+  color: var(--copia);
+}

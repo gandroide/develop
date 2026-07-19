@@ -1,0 +1,47 @@
+.grupo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.etiqueta {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: var(--etiqueta-tracking);
+  font-size: var(--fs-xs);
+  color: var(--gris);
+  border-bottom: 1px solid var(--gris-claro);
+  padding-bottom: 2px;
+}
+
+.textarea {
+  --linea-h: 28px;
+  min-height: calc(var(--linea-h) * 6);
+  padding: 6px var(--space-3);
+  background-color: var(--papel);
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent calc(var(--linea-h) - 1px),
+    rgba(38, 36, 31, 0.22) calc(var(--linea-h) - 1px),
+    rgba(38, 36, 31, 0.22) var(--linea-h)
+  );
+  background-attachment: local;
+  border: 1px solid var(--tinta);
+  color: var(--tinta);
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  line-height: var(--linea-h);
+  resize: vertical;
+}
+
+.textarea:focus-visible {
+  outline: 2px solid var(--rojo);
+  outline-offset: 2px;
+}
+
+.textarea::placeholder {
+  color: var(--gris);
+  font-style: italic;
+  line-height: var(--linea-h);
+}

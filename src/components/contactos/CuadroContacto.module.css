@@ -1,0 +1,32 @@
+.cuadro {
+  position: relative;
+  aspect-ratio: 1;
+  background: #1a1815;
+  border: 1px solid #0f0d0b;
+  color: var(--gris-claro);
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 4px 6px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.06em;
+  overflow: hidden;
+}
+
+.numero {
+  position: relative;
+  z-index: 1;
+  opacity: 0.65;
+}
+
+.circulo {
+  position: absolute;
+  inset: 8%;
+  z-index: 0;
+}
+
+.hoy {
+  outline: 1px solid var(--rojo);
+  outline-offset: -1px;
+}

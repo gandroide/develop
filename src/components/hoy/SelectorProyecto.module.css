@@ -1,0 +1,38 @@
+.grupo {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.chip {
+  flex: 1;
+  position: relative;
+  background: var(--copia);
+  color: var(--tinta);
+  border: 1px solid var(--tinta);
+  padding: 10px 12px;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: var(--etiqueta-tracking);
+  font-size: var(--fs-xs);
+}
+
+.chip::before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  bottom: 4px;
+  left: 4px;
+  border: 1px dashed transparent;
+  pointer-events: none;
+}
+
+.activo {
+  background: var(--tinta);
+  color: var(--copia);
+  border-color: var(--tinta);
+}
+
+.activo::before {
+  border-color: var(--rojo);
+}

@@ -1,0 +1,109 @@
+.contenedor {
+  padding-top: var(--space-3);
+}
+
+.hoja {
+  position: relative;
+  background: var(--papel);
+  border: 1px solid var(--tinta);
+  padding: var(--space-5) var(--space-4) var(--space-5) calc(var(--space-5) + var(--space-3));
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.hoja::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--space-4);
+  width: 1px;
+  background: var(--rojo);
+  opacity: 0.55;
+}
+
+.hoja::after {
+  content: "";
+  position: absolute;
+  top: var(--space-5);
+  bottom: var(--space-5);
+  left: calc(var(--space-4) + 3px);
+  width: 1px;
+  background: var(--rojo);
+  opacity: 0.25;
+}
+
+.encabezado {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px dashed var(--gris-claro);
+}
+
+.fila {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-3);
+}
+
+.fecha {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: var(--etiqueta-tracking);
+  font-size: var(--fs-xs);
+  color: var(--gris);
+}
+
+.pagina {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: var(--fs-xs);
+  color: var(--gris);
+}
+
+.paginaNumero {
+  color: var(--rojo);
+  margin: 0 4px;
+  font-size: var(--fs-sm);
+}
+
+.titulo {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xl);
+  color: var(--tinta);
+  letter-spacing: 0.05em;
+  text-transform: lowercase;
+  margin-top: 2px;
+}
+
+.rolloTag {
+  align-self: flex-start;
+  margin-top: var(--space-2);
+  border: 1px solid var(--tinta);
+  padding: 2px 8px;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: var(--etiqueta-tracking);
+  font-size: var(--fs-xs);
+  color: var(--tinta);
+}
+
+.seccion {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.etiqueta {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: var(--etiqueta-tracking);
+  font-size: var(--fs-xs);
+  color: var(--gris);
+  border-bottom: 1px solid var(--gris-claro);
+  padding-bottom: 2px;
+}

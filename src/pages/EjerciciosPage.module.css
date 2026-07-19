@@ -1,0 +1,82 @@
+.contenedor {
+  padding-top: var(--space-3);
+}
+
+.hoja {
+  position: relative;
+  background: var(--papel);
+  border: 1px solid var(--tinta);
+  padding: var(--space-5) var(--space-4) var(--space-5) calc(var(--space-5) + var(--space-3));
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.hoja::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--space-4);
+  width: 1px;
+  background: var(--rojo);
+  opacity: 0.55;
+}
+
+.hoja::after {
+  content: "";
+  position: absolute;
+  top: var(--space-5);
+  bottom: var(--space-5);
+  left: calc(var(--space-4) + 3px);
+  width: 1px;
+  background: var(--rojo);
+  opacity: 0.25;
+}
+
+.encabezado {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px dashed var(--gris-claro);
+}
+
+.filaTitulo {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-3);
+}
+
+.rotulo {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: var(--etiqueta-tracking);
+  font-size: var(--fs-sm);
+  color: var(--tinta);
+}
+
+.total {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: var(--fs-xs);
+  color: var(--gris);
+  border: 1px solid var(--gris);
+  padding: 2px 8px;
+}
+
+.subtitulo {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--gris);
+  line-height: 1.5;
+  font-style: italic;
+}
+
+.lista {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
