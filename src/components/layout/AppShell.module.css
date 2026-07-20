@@ -11,12 +11,13 @@
   z-index: 5;
   background: var(--papel);
   border-bottom: 1px solid var(--gris-claro);
+  padding-top: var(--safe-top);
 }
 
 .encabezadoInterno {
   max-width: 640px;
   margin: 0 auto;
-  padding: var(--space-3) var(--space-4);
+  padding: var(--space-3) calc(var(--space-4) + var(--safe-right)) var(--space-3) calc(var(--space-4) + var(--safe-left));
   display: flex;
   justify-content: space-between;
   align-items: baseline;
