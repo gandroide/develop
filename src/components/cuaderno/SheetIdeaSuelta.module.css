@@ -1,0 +1,56 @@
+.dialogo {
+  display: none;
+  border: 1px solid var(--tinta);
+  background: var(--copia);
+  color: var(--tinta);
+  padding: 0;
+  width: min(560px, 100vw);
+  max-height: 88vh;
+  margin: auto auto 0 auto;
+  flex-direction: column;
+  padding-bottom: var(--safe-bottom);
+}
+
+.dialogo[open] {
+  display: flex;
+}
+
+.dialogo::backdrop {
+  background: rgba(20, 18, 15, 0.6);
+}
+
+.cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--tinta);
+  background: var(--papel);
+}
+
+.titulo {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: var(--etiqueta-tracking);
+  font-size: var(--fs-xs);
+  color: var(--tinta);
+}
+
+.cerrar {
+  background: transparent;
+  border: 0;
+  color: var(--gris);
+  font-family: var(--font-mono);
+  font-size: var(--fs-md);
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+.cerrar:hover {
+  color: var(--rojo);
+}
+
+.cuerpo {
+  padding: var(--space-4);
+  overflow: auto;
+}

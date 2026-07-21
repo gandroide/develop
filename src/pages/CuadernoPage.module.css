@@ -9,7 +9,7 @@
   padding: var(--space-5) var(--space-4) var(--space-5) calc(var(--space-5) + var(--space-3));
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  gap: var(--space-5);
 }
 
 .hoja::before {
@@ -37,95 +37,70 @@
 .encabezado {
   display: flex;
   flex-direction: column;
-  gap: var(--space-1);
+  gap: var(--space-2);
   padding-bottom: var(--space-3);
   border-bottom: 1px dashed var(--gris-claro);
 }
 
-.fila {
+.filaTitulo {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
   gap: var(--space-3);
 }
 
-.fecha {
+.rotulo {
   font-family: var(--font-mono);
   text-transform: uppercase;
   letter-spacing: var(--etiqueta-tracking);
-  font-size: var(--fs-xs);
-  color: var(--gris);
-}
-
-.pagina {
-  font-family: var(--font-mono);
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-size: var(--fs-xs);
-  color: var(--gris);
-}
-
-.paginaNumero {
-  color: var(--rojo);
-  margin: 0 4px;
   font-size: var(--fs-sm);
-}
-
-.titulo {
-  font-family: var(--font-mono);
-  font-size: var(--fs-xl);
   color: var(--tinta);
-  letter-spacing: 0.05em;
-  text-transform: lowercase;
-  margin-top: 2px;
 }
 
-.filaRolloAtajo {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: var(--space-3);
-  margin-top: var(--space-2);
-}
-
-.rolloTag {
-  border: 1px solid var(--tinta);
-  padding: 2px 8px;
+.total {
   font-family: var(--font-mono);
   text-transform: uppercase;
-  letter-spacing: var(--etiqueta-tracking);
+  letter-spacing: 0.2em;
   font-size: var(--fs-xs);
-  color: var(--tinta);
-}
-
-.atajoIdea {
-  background: transparent;
   color: var(--gris);
-  border: 1px dashed var(--gris);
-  padding: 2px 10px;
+  border: 1px solid var(--gris);
+  padding: 2px 8px;
+}
+
+.subtitulo {
   font-family: var(--font-mono);
-  text-transform: lowercase;
-  letter-spacing: 0.04em;
   font-size: var(--fs-xs);
+  color: var(--gris);
+  font-style: italic;
 }
 
-.atajoIdea:hover {
-  color: var(--rojo);
-  border-color: var(--rojo);
-}
-
-.seccion {
+.bloque {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: var(--space-3);
 }
 
-.etiqueta {
+.bloqueEncabezado {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-3);
+  padding-bottom: 2px;
+  border-bottom: 1px solid var(--gris-claro);
+}
+
+.bloqueTitulo {
   font-family: var(--font-mono);
   text-transform: uppercase;
   letter-spacing: var(--etiqueta-tracking);
   font-size: var(--fs-xs);
   color: var(--gris);
-  border-bottom: 1px solid var(--gris-claro);
-  padding-bottom: 2px;
+}
+
+.bloqueMeta {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: var(--etiqueta-tracking);
+  font-size: var(--fs-xs);
+  color: var(--gris);
 }

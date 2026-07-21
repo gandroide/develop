@@ -1,0 +1,137 @@
+.contenedor {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.grupo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.mesTitulo {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: var(--etiqueta-tracking);
+  font-size: var(--fs-xs);
+  color: var(--gris);
+  border-bottom: 1px solid var(--gris-claro);
+  padding-bottom: 2px;
+}
+
+.lista {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.nota {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-2) 0 var(--space-3);
+  border-bottom: 1px dashed var(--gris-claro);
+}
+
+.nota:last-child {
+  border-bottom: 0;
+}
+
+.metaFila {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.fecha {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--gris);
+  letter-spacing: 0.06em;
+}
+
+.chipsMeta {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.chipMeta {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: var(--etiqueta-tracking);
+  font-size: var(--fs-xs);
+  color: var(--tinta);
+  border: 1px solid var(--gris-claro);
+  padding: 1px 6px;
+}
+
+.texto {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  line-height: 1.6;
+  color: var(--tinta);
+  white-space: pre-wrap;
+}
+
+.acciones {
+  display: flex;
+  gap: var(--space-2);
+  justify-content: flex-end;
+}
+
+.accion {
+  background: transparent;
+  color: var(--gris);
+  border: 0;
+  padding: 2px 4px;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: var(--etiqueta-tracking);
+  font-size: var(--fs-xs);
+}
+
+.accion:hover {
+  color: var(--tinta);
+}
+
+.accionRojo:hover {
+  color: var(--rojo);
+}
+
+.accionPrim {
+  color: var(--tinta);
+  border: 1px solid var(--tinta);
+  padding: 4px 10px;
+}
+
+.edicion {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.textareaEdicion {
+  min-height: 60px;
+  padding: 6px var(--space-3);
+  background: var(--papel);
+  border: 1px solid var(--tinta);
+  color: var(--tinta);
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+  resize: vertical;
+}
+
+.vacio {
+  padding: var(--space-5);
+  text-align: center;
+  color: var(--gris);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: var(--etiqueta-tracking);
+  font-size: var(--fs-xs);
+}

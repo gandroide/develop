@@ -1,8 +1,8 @@
 import { openDB, type DBSchema, type IDBPDatabase } from 'idb';
-import type { Entrada, Rollo, Config } from '../types';
+import type { Entrada, Rollo, Config, NotaCuaderno } from '../types';
 
 export const DB_NAME = 'revelado';
-export const DB_VERSION = 1;
+export const DB_VERSION = 2;
 
 export interface ReveladoDB extends DBSchema {
   entradas: {
@@ -18,6 +18,11 @@ export interface ReveladoDB extends DBSchema {
     key: string;
     value: { k: string; v: unknown };
   };
+  cuaderno: {
+    key: string;
+    value: NotaCuaderno;
+    indexes: { 'por-fecha': string; 'por-proyecto': string; 'por-tipo': string };
+  };
 }
 
 let dbPromise: Promise<IDBPDatabase<ReveladoDB>> | null = null;
@@ -25,18 +30,20 @@ let dbPromise: Promise<IDBPDatabase<ReveladoDB>> | null = null;
 export const getDB = (): Promise<IDBPDatabase<ReveladoDB>> => {
   if (!dbPromise) {
     dbPromise = openDB<ReveladoDB>(DB_NAME, DB_VERSION, {
-      upgrade(db) {
-        if (!db.objectStoreNames.contains('entradas')) {
+      upgrade(db, oldVersion) {
+        if (oldVersion < 1) {
           const entradas = db.createObjectStore('entradas', { keyPath: ['rolloId', 'fecha'] });
           entradas.createIndex('por-fecha', 'fecha');
           entradas.createIndex('por-rollo', 'rolloId');
           entradas.createIndex('por-proyecto', 'proyecto');
-        }
-        if (!db.objectStoreNames.contains('rollos')) {
           db.createObjectStore('rollos', { keyPath: 'id' });
-        }
-        if (!db.objectStoreNames.contains('config')) {
           db.createObjectStore('config', { keyPath: 'k' });
+        }
+        if (oldVersion < 2) {
+          const cuaderno = db.createObjectStore('cuaderno', { keyPath: 'id' });
+          cuaderno.createIndex('por-fecha', 'creadaEn');
+          cuaderno.createIndex('por-proyecto', 'proyecto');
+          cuaderno.createIndex('por-tipo', 'tipo');
         }
       },
     });

@@ -1,6 +1,6 @@
 import { useMemo, useRef, useState } from 'react';
 import styles from './PanelExportar.module.css';
-import type { Entrada, Rollo, Config } from '../../types';
+import type { Entrada, NotaCuaderno, Rollo, Config } from '../../types';
 import {
   generarMarkdown,
   generarRespaldo,
@@ -12,6 +12,7 @@ import { PreviewExport } from './PreviewExport';
 interface Props {
   entradas: Entrada[];
   rollos: Rollo[];
+  notas: NotaCuaderno[];
   config: Config;
   onImportar: (json: string) => Promise<void>;
 }
@@ -26,15 +27,18 @@ interface Preview {
   contenido: string;
 }
 
-export const PanelExportar = ({ entradas, rollos, config, onImportar }: Props) => {
+export const PanelExportar = ({ entradas, rollos, notas, config, onImportar }: Props) => {
   const inputFile = useRef<HTMLInputElement | null>(null);
   const [mensaje, setMensaje] = useState<string>('');
   const [preview, setPreview] = useState<Preview | null>(null);
 
-  const contenidoMd = useMemo(() => generarMarkdown(entradas, rollos), [entradas, rollos]);
+  const contenidoMd = useMemo(
+    () => generarMarkdown(entradas, rollos, notas),
+    [entradas, rollos, notas],
+  );
   const contenidoJson = useMemo(
-    () => serializarRespaldo(generarRespaldo(entradas, rollos, config)),
-    [entradas, rollos, config],
+    () => serializarRespaldo(generarRespaldo(entradas, rollos, notas, config)),
+    [entradas, rollos, notas, config],
   );
 
   const descargar = (nombre: string, mime: string, contenido: string) => {

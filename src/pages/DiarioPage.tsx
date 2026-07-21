@@ -4,17 +4,18 @@ import { FiltroProyecto, type FiltroValor } from '../components/diario/FiltroPro
 import { ListaEntradas } from '../components/diario/ListaEntradas';
 import { PanelExportar } from '../components/diario/PanelExportar';
 import { PanelAjustes } from '../components/ajustes/PanelAjustes';
-import type { Entrada, Rollo, Config } from '../types';
+import type { Entrada, NotaCuaderno, Rollo, Config } from '../types';
 
 interface Props {
   entradas: Entrada[];
   rollos: Rollo[];
+  notas: NotaCuaderno[];
   config: Config;
   onImportar: (json: string) => Promise<void>;
   onCambiarHora: (hora: string | undefined) => Promise<void>;
 }
 
-export const DiarioPage = ({ entradas, rollos, config, onImportar, onCambiarHora }: Props) => {
+export const DiarioPage = ({ entradas, rollos, notas, config, onImportar, onCambiarHora }: Props) => {
   const [filtro, setFiltro] = useState<FiltroValor>('todos');
 
   const filtradas = useMemo(() => {
@@ -63,6 +64,7 @@ export const DiarioPage = ({ entradas, rollos, config, onImportar, onCambiarHora
         <PanelExportar
           entradas={entradas}
           rollos={rollos}
+          notas={notas}
           config={config}
           onImportar={onImportar}
         />

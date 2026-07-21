@@ -6,8 +6,10 @@ import { HoyPage } from './pages/HoyPage';
 import { ContactosPage } from './pages/ContactosPage';
 import { EjerciciosPage } from './pages/EjerciciosPage';
 import { DiarioPage } from './pages/DiarioPage';
+import { CuadernoPage } from './pages/CuadernoPage';
 import { useRolloActivo } from './hooks/useRolloActivo';
 import { useTodasEntradas } from './hooks/useTodasEntradas';
+import { useNotasCuaderno } from './hooks/useNotasCuaderno';
 import { useConfig } from './hooks/useConfig';
 import { useRegisterSW } from './hooks/useRegisterSW';
 import { listarRollos } from './lib/rollos';
@@ -19,6 +21,7 @@ import type { Rollo, TabId } from './types';
 export const App = () => {
   const { rollo, cargando: cargandoRollo, archivarYAvanzar, refrescar: refrescarRollo } = useRolloActivo();
   const { entradas, refrescar: refrescarEntradas } = useTodasEntradas();
+  const { notas, refrescar: refrescarNotas } = useNotasCuaderno();
   const { config, actualizar: actualizarConfig } = useConfig();
   const { necesitaActualizar, actualizar } = useRegisterSW();
 
@@ -46,16 +49,19 @@ export const App = () => {
   const importar = useCallback(async (json: string) => {
     const respaldo = parsearRespaldo(json);
     const db = await getDB();
-    const tx = db.transaction(['entradas', 'rollos', 'config'], 'readwrite');
+    const tx = db.transaction(['entradas', 'rollos', 'cuaderno'], 'readwrite');
     await tx.objectStore('entradas').clear();
     await tx.objectStore('rollos').clear();
+    await tx.objectStore('cuaderno').clear();
     for (const r of respaldo.rollos) await tx.objectStore('rollos').put(r);
     for (const e of respaldo.entradas) await tx.objectStore('entradas').put(e);
+    for (const n of respaldo.notasCuaderno) await tx.objectStore('cuaderno').put(n);
     await tx.done;
     await escribirConfig(respaldo.config);
     await refrescarRollo();
     await refrescarEntradas();
-  }, [refrescarRollo, refrescarEntradas]);
+    await refrescarNotas();
+  }, [refrescarRollo, refrescarEntradas, refrescarNotas]);
 
   const empezarSiguiente = useCallback(async () => {
     await archivarYAvanzar();
@@ -79,7 +85,14 @@ export const App = () => {
 
   return (
     <AppShell rollo={rollo}>
-      {tab === 'hoy' && <HoyPage rollo={rollo} onCambio={cambio} />}
+      {tab === 'hoy' && (
+        <HoyPage
+          rollo={rollo}
+          notas={notas}
+          onCambio={cambio}
+          onCambioNotas={refrescarNotas}
+        />
+      )}
       {tab === 'contactos' && (
         <ContactosPage
           rollo={rollo}
@@ -92,11 +105,13 @@ export const App = () => {
         <DiarioPage
           entradas={entradas}
           rollos={rollos}
+          notas={notas}
           config={config}
           onImportar={importar}
           onCambiarHora={cambiarHora}
         />
       )}
+      {tab === 'cuaderno' && <CuadernoPage notas={notas} onCambio={refrescarNotas} />}
       <BottomTabBar activo={tab} onCambiar={setTab} hoyMarcado={hoyMarcado} />
       <UpdatePrompt visible={necesitaActualizar} onActualizar={actualizar} />
     </AppShell>
