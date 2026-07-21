@@ -1,6 +1,8 @@
 export type Proyecto = 'cueva' | 'madre' | 'otro';
 
-export type TabId = 'hoy' | 'contactos' | 'ejercicios' | 'diario';
+export type TabId = 'hoy' | 'contactos' | 'ejercicios' | 'diario' | 'cuaderno';
+
+export type TipoNota = 'idea-de-foto' | 'pensamiento' | 'referencia';
 
 export interface Ejercicio {
   id: string;
@@ -31,10 +33,19 @@ export interface Config {
   recordatorioHora?: string;
 }
 
+export interface NotaCuaderno {
+  id: string;
+  creadaEn: string;
+  texto: string;
+  proyecto?: Proyecto;
+  tipo?: TipoNota;
+}
+
 export interface Respaldo {
-  version: 1;
+  version: 2;
   exportadoEn: string;
   rollos: Rollo[];
   entradas: Entrada[];
+  notasCuaderno: NotaCuaderno[];
   config: Config;
 }

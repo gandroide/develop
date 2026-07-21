@@ -12,6 +12,7 @@ const TABS: { id: TabId; etiqueta: string; numero: string }[] = [
   { id: 'contactos', etiqueta: 'Contactos', numero: '02' },
   { id: 'ejercicios', etiqueta: 'Ejercicios', numero: '03' },
   { id: 'diario', etiqueta: 'Diario', numero: '04' },
+  { id: 'cuaderno', etiqueta: 'Cuaderno', numero: '05' },
 ];
 
 export const BottomTabBar = ({ activo, onCambiar, hoyMarcado }: Props) => {

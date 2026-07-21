@@ -1,8 +1,18 @@
-import type { Entrada, Respaldo, Rollo, Config } from '../types';
+import type { Entrada, NotaCuaderno, Respaldo, Rollo, Config } from '../types';
 import { ejercicioPorId } from '../data/ejercicios';
 import { formatearHumano } from './fechas';
 
-export const generarMarkdown = (entradas: Entrada[], rollos: Rollo[]): string => {
+const TIPO_ETIQUETA: Record<NonNullable<NotaCuaderno['tipo']>, string> = {
+  'idea-de-foto': 'Idea de foto',
+  pensamiento: 'Pensamiento',
+  referencia: 'Referencia',
+};
+
+export const generarMarkdown = (
+  entradas: Entrada[],
+  rollos: Rollo[],
+  notas: NotaCuaderno[] = [],
+): string => {
   const porRollo = new Map<string, Entrada[]>();
   for (const e of entradas) {
     const arr = porRollo.get(e.rolloId) ?? [];
@@ -30,18 +40,36 @@ export const generarMarkdown = (entradas: Entrada[], rollos: Rollo[]): string =>
       secciones.push('');
     }
   }
+  if (notas.length > 0) {
+    secciones.push('## Cuaderno');
+    secciones.push('');
+    const ordenadas = [...notas].sort((a, b) => a.creadaEn.localeCompare(b.creadaEn));
+    for (const n of ordenadas) {
+      const fecha = n.creadaEn.slice(0, 10);
+      const meta: string[] = [];
+      if (n.tipo) meta.push(TIPO_ETIQUETA[n.tipo]);
+      if (n.proyecto) meta.push(n.proyecto);
+      const cabecera = meta.length > 0 ? `${fecha} · ${meta.join(' · ')}` : fecha;
+      secciones.push(`### ${cabecera}`);
+      secciones.push('');
+      secciones.push(n.texto.trim() || '_(sin texto)_');
+      secciones.push('');
+    }
+  }
   return secciones.join('\n');
 };
 
 export const generarRespaldo = (
   entradas: Entrada[],
   rollos: Rollo[],
+  notasCuaderno: NotaCuaderno[],
   config: Config,
 ): Respaldo => ({
-  version: 1,
+  version: 2,
   exportadoEn: new Date().toISOString(),
   entradas,
   rollos,
+  notasCuaderno,
   config,
 });
 
@@ -51,9 +79,19 @@ export const serializarRespaldo = (respaldo: Respaldo): string =>
 export const parsearRespaldo = (json: string): Respaldo => {
   const data = JSON.parse(json);
   if (!data || typeof data !== 'object') throw new Error('Respaldo inválido: no es un objeto.');
-  if (data.version !== 1) throw new Error(`Respaldo inválido: versión ${data.version} desconocida.`);
+  if (data.version !== 1 && data.version !== 2) {
+    throw new Error(`Respaldo inválido: versión ${data.version} desconocida.`);
+  }
   if (!Array.isArray(data.entradas)) throw new Error('Respaldo inválido: entradas ausentes.');
   if (!Array.isArray(data.rollos)) throw new Error('Respaldo inválido: rollos ausentes.');
   if (!data.config || typeof data.config !== 'object') throw new Error('Respaldo inválido: config ausente.');
-  return data as Respaldo;
+  const notasCuaderno: NotaCuaderno[] = Array.isArray(data.notasCuaderno) ? data.notasCuaderno : [];
+  return {
+    version: 2,
+    exportadoEn: data.exportadoEn ?? new Date().toISOString(),
+    entradas: data.entradas,
+    rollos: data.rollos,
+    notasCuaderno,
+    config: data.config,
+  };
 };

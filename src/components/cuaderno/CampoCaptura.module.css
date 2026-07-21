@@ -1,0 +1,101 @@
+.grupo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.etiqueta {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: var(--etiqueta-tracking);
+  font-size: var(--fs-xs);
+  color: var(--gris);
+  border-bottom: 1px solid var(--gris-claro);
+  padding-bottom: 2px;
+}
+
+.textarea {
+  min-height: 40px;
+  padding: 10px var(--space-3);
+  background: var(--papel);
+  border: 1px solid var(--tinta);
+  color: var(--tinta);
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+  resize: none;
+  overflow: hidden;
+}
+
+.textarea:focus-visible {
+  outline: 2px solid var(--rojo);
+  outline-offset: 2px;
+}
+
+.textarea::placeholder {
+  color: var(--gris);
+  font-style: italic;
+}
+
+.chipsFila {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.chipsRotulo {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: var(--etiqueta-tracking);
+  font-size: var(--fs-xs);
+  color: var(--gris);
+  min-width: 68px;
+}
+
+.chips {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.chip {
+  background: var(--copia);
+  color: var(--tinta);
+  border: 1px solid var(--tinta);
+  padding: 4px 10px;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: var(--etiqueta-tracking);
+  font-size: var(--fs-xs);
+}
+
+.chipActivo {
+  background: var(--tinta);
+  color: var(--copia);
+}
+
+.boton {
+  position: relative;
+  align-self: flex-start;
+  padding: 10px var(--space-5);
+  background: var(--tinta);
+  color: var(--copia);
+  border: 1px solid var(--tinta);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: var(--etiqueta-tracking);
+  font-size: var(--fs-sm);
+}
+
+.boton:disabled {
+  background: var(--copia);
+  color: var(--gris);
+  border-color: var(--gris-claro);
+  cursor: not-allowed;
+}
+
+.boton:not(:disabled):hover {
+  background: var(--rojo);
+  border-color: var(--rojo);
+}

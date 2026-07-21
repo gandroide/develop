@@ -1,0 +1,45 @@
+.grupo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.rotulo {
+  display: block;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: var(--etiqueta-tracking);
+  font-size: var(--fs-xs);
+  color: var(--gris);
+  margin-bottom: 4px;
+}
+
+.fila {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  border: 1px solid var(--tinta);
+}
+
+.chip {
+  flex: 1 1 auto;
+  min-width: 25%;
+  background: var(--copia);
+  color: var(--tinta);
+  border: 0;
+  border-right: 1px solid var(--tinta);
+  padding: 6px 10px;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: var(--etiqueta-tracking);
+  font-size: var(--fs-xs);
+}
+
+.chip:last-child {
+  border-right: 0;
+}
+
+.chipActivo {
+  background: var(--tinta);
+  color: var(--copia);
+}
